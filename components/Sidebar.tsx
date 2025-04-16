@@ -146,7 +146,7 @@ export function Sidebar() {
     }
 
     return (
-        <div className="w-56 bg-white h-screen border-r">
+        <div className="w-56 bg-white h-screen border-r hidden md:block">
             {/* Logo */}
             <div className="p-4 border-b">
                 <div className="flex items-center gap-2">

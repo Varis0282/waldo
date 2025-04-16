@@ -30,7 +30,7 @@ export function Navbar({ user }: NavbarProps) {
                 <Input
                     type="text"
                     placeholder="Search..."
-                    className="pl-10 pr-4 py-2 w-64 border-none shadow-none"
+                    className="pl-10 pr-4 py-2 md:w-64 border-none shadow-none"
                 />
             </div>
             <div className="flex items-center gap-4">
