@@ -1,4 +1,3 @@
-// components/dashboard/navbar.tsx
 "use client"
 
 import { Bell, ChevronDown, Search } from "lucide-react"

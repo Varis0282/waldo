@@ -6,6 +6,7 @@ import { getInTransitShipments } from "@/utils/jsonData";
 import { MapPin } from "lucide-react";
 import Image from "next/image";
 import { toast } from "sonner";
+import { SimpleMap } from "./ShipmentMap";
 
 interface InTransitShipment {
     id: string;
@@ -26,7 +27,15 @@ interface InTransitShipment {
         estimation: string;
         weight: string;
         fee: string;
-    };
+        pickupCoords: {
+            lat: number;
+            lng: number;
+        };
+        deliveryCoords: {
+            lat: number;
+            lng: number;
+        };
+    }
 }
 
 interface ShipmentCardProps {
@@ -35,7 +44,6 @@ interface ShipmentCardProps {
     onSelect: (id: string) => void;
 }
 
-// Individual shipment card component
 function ShipmentCard({ shipment, isSelected, onSelect }: ShipmentCardProps) {
     return (
         <div
@@ -84,7 +92,6 @@ function ShipmentCard({ shipment, isSelected, onSelect }: ShipmentCardProps) {
     );
 }
 
-// Information card for the "On the Way" section
 function InfoCard({ label, value }: { label: string; value: string }) {
     return (
         <div>
@@ -94,23 +101,35 @@ function InfoCard({ label, value }: { label: string; value: string }) {
     );
 }
 
-// Main component that combines both sections
 export function ShipmentTrackingSection() {
     const [shipments, setShipments] = useState<InTransitShipment[]>([]);
     const [selectedShipmentId, setSelectedShipmentId] = useState<string>("");
 
     useEffect(() => {
-        // Get shipments data
         const shipmentData = getInTransitShipments();
-        setShipments(shipmentData);
 
-        // Set the default selected shipment
-        if (shipmentData.length > 0 && !selectedShipmentId) {
-            setSelectedShipmentId(shipmentData[0].id);
+        const enhancedData = shipmentData.map(shipment => ({
+            ...shipment,
+            details: {
+                ...shipment.details,
+                pickupCoords: {
+                    lat: shipment.details.mapData.center.lat - 0.02,
+                    lng: shipment.details.mapData.center.lng - 0.02
+                },
+                deliveryCoords: {
+                    lat: shipment.details.mapData.center.lat + 0.02,
+                    lng: shipment.details.mapData.center.lng + 0.02
+                }
+            }
+        }));
+
+        setShipments(enhancedData);
+
+        if (enhancedData.length > 0 && !selectedShipmentId) {
+            setSelectedShipmentId(enhancedData[0].id);
         }
     }, [selectedShipmentId]);
 
-    // Find the currently selected shipment
     const selectedShipment = shipments.find(ship => ship.id === selectedShipmentId) || shipments[0];
 
     return (
@@ -144,14 +163,12 @@ export function ShipmentTrackingSection() {
                 <CardContent className="px-2">
                     {selectedShipment && (
                         <>
-                            <div className="bg-gray-100 rounded-md p-4 h-64 flex items-center justify-center mb-4">
-                                <div className="text-center">
-                                    <p className="text-gray-500 mb-2">Map View</p>
-                                    <p className="text-xs text-gray-400">
-                                        Centered at {selectedShipment.details.mapData.center.lat.toFixed(4)},
-                                        {selectedShipment.details.mapData.center.lng.toFixed(4)}
-                                    </p>
-                                </div>
+                            <div className="bg-gray-100 rounded-md h-64 mb-4 overflow-hidden">
+                                {/* Use the Simple Map component */}
+                                <SimpleMap
+                                    center={selectedShipment.details.mapData.center}
+                                    zoom={selectedShipment.details.mapData.zoom}
+                                />
                             </div>
 
                             <div className="grid grid-cols-5 gap-4 divide-x divide-gray-200">
