@@ -1,0 +1,250 @@
+{
+  "user": {
+    "name": "Max",
+    "avatar": "/images/avatar.png"
+  },
+  "stats": [
+    {
+      "title": "Total Units Packed",
+      "value": 831071,
+      "change": 13,
+      "period": "7k today"
+    },
+    {
+      "title": "Total Shipments",
+      "value": 831071,
+      "change": 13,
+      "period": "7k today"
+    },
+    {
+      "title": "Active Shipments",
+      "value": 831071,
+      "change": 13,
+      "period": "7k today"
+    },
+    {
+      "title": "Delivered Shipments",
+      "value": 831071,
+      "change": 13,
+      "period": "7k today"
+    }
+  ],
+  "inTransitShipments": [
+    {
+      "id": "ship-001",
+      "shipmentNumber": "831070",
+      "pickupLocation": "1070 street st yard main glasco, san Francisco",
+      "dropoffLocation": "1070 street st yard main glasco, san Francisco",
+      "image": "/images/truck1.png",
+      "details": {
+        "mapData": {
+          "center": {
+            "lat": 37.7749,
+            "lng": -122.4194
+          },
+          "zoom": 12
+        },
+        "category": "Electronics",
+        "distance": "120KM",
+        "estimation": "24 h",
+        "weight": "10kg",
+        "fee": "$1000"
+      }
+    },
+    {
+      "id": "ship-002",
+      "shipmentNumber": "831071",
+      "pickupLocation": "1070 street st yard main glasco, san Francisco",
+      "dropoffLocation": "1070 street st yard main glasco, san Francisco",
+      "image": "/images/truck1.png",
+      "details": {
+        "mapData": {
+          "center": {
+            "lat": 37.7649,
+            "lng": -122.4194
+          },
+          "zoom": 12
+        },
+        "category": "Electronics",
+        "distance": "120KM",
+        "estimation": "24 h",
+        "weight": "10kg",
+        "fee": "$1000"
+      }
+    },
+    {
+      "id": "ship-003",
+      "shipmentNumber": "831072",
+      "pickupLocation": "435 Market St, San Francisco",
+      "dropoffLocation": "100 Main St, Los Angeles",
+      "image": "/images/truck1.png",
+      "details": {
+        "mapData": {
+          "center": {
+            "lat": 34.0522,
+            "lng": -118.2437
+          },
+          "zoom": 10
+        },
+        "category": "Books",
+        "distance": "380KM",
+        "estimation": "5 h",
+        "weight": "15kg",
+        "fee": "$1200"
+      }
+    },
+    {
+      "id": "ship-004",
+      "shipmentNumber": "831073",
+      "pickupLocation": "789 Valencia St, San Francisco",
+      "dropoffLocation": "456 Pine Ave, Seattle",
+      "image": "/images/truck2.png",
+      "details": {
+        "mapData": {
+          "center": {
+            "lat": 47.6062,
+            "lng": -122.3321
+          },
+          "zoom": 11
+        },
+        "category": "Furniture",
+        "distance": "1100KM",
+        "estimation": "14 h",
+        "weight": "75kg",
+        "fee": "$2500"
+      }
+    },
+    {
+      "id": "ship-005",
+      "shipmentNumber": "831074",
+      "pickupLocation": "222 Broadway, New York",
+      "dropoffLocation": "555 Michigan Ave, Chicago",
+      "image": "/images/truck1.png",
+      "details": {
+        "mapData": {
+          "center": {
+            "lat": 41.8781,
+            "lng": -87.6298
+          },
+          "zoom": 11
+        },
+        "category": "Clothing",
+        "distance": "1300KM",
+        "estimation": "16 h",
+        "weight": "30kg",
+        "fee": "$1800"
+      }
+    }
+  ],
+  "defaultSelectedShipment": "ship-001",
+  "trackingOrders": [
+    {
+      "productId": "9256821912-FE",
+      "type": "electronics",
+      "arrivalTime": "4/13/2025",
+      "weight": "25 KG",
+      "route": {
+        "from": "San Francisco",
+        "to": "New York"
+      },
+      "fee": "$2000",
+      "status": "Delivered"
+    },
+    {
+      "productId": "9256821912-FE",
+      "type": "electronics",
+      "arrivalTime": "4/13/2025",
+      "weight": "25 KG",
+      "route": {
+        "from": "San Francisco",
+        "to": "New York"
+      },
+      "fee": "$2000",
+      "status": "Delivered"
+    },
+    {
+      "productId": "9256821912-FE",
+      "type": "electronics",
+      "arrivalTime": "4/13/2025",
+      "weight": "25 KG",
+      "route": {
+        "from": "San Francisco",
+        "to": "New York"
+      },
+      "fee": "$2000",
+      "status": "Delivered"
+    },
+    {
+      "productId": "9256821913-FE",
+      "type": "electronics",
+      "arrivalTime": "4/14/2025",
+      "weight": "30 KG",
+      "route": {
+        "from": "San Francisco",
+        "to": "Chicago"
+      },
+      "fee": "$1800",
+      "status": "In Transit"
+    },
+    {
+      "productId": "9256821914-FE",
+      "type": "furniture",
+      "arrivalTime": "4/15/2025",
+      "weight": "75 KG",
+      "route": {
+        "from": "San Francisco",
+        "to": "Seattle"
+      },
+      "fee": "$2500",
+      "status": "Processing"
+    },
+    {
+      "productId": "9256821915-FE",
+      "type": "electronics",
+      "arrivalTime": "4/16/2025",
+      "weight": "15 KG",
+      "route": {
+        "from": "San Francisco",
+        "to": "Austin"
+      },
+      "fee": "$1750",
+      "status": "In Transit"
+    },
+    {
+      "productId": "9256821916-FE",
+      "type": "clothing",
+      "arrivalTime": "4/13/2025",
+      "weight": "5 KG",
+      "route": {
+        "from": "San Francisco",
+        "to": "Miami"
+      },
+      "fee": "$1600",
+      "status": "Delivered"
+    },
+    {
+      "productId": "9256821917-FE",
+      "type": "electronics",
+      "arrivalTime": "4/14/2025",
+      "weight": "22 KG",
+      "route": {
+        "from": "San Francisco",
+        "to": "Boston"
+      },
+      "fee": "$1900",
+      "status": "In Transit"
+    },
+    {
+      "productId": "9256821918-FE",
+      "type": "electronics",
+      "arrivalTime": "4/13/2025",
+      "weight": "25 KG",
+      "route": {
+        "from": "San Francisco",
+        "to": "New York"
+      },
+      "fee": "$2000",
+      "status": "Delivered"
+    }
+  ]
+}
