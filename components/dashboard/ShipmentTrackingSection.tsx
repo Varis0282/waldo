@@ -108,7 +108,7 @@ export function ShipmentTrackingSection() {
     useEffect(() => {
         const shipmentData = getInTransitShipments();
 
-        const enhancedData = shipmentData.map(shipment => ({
+        const enhancedData = shipmentData.map((shipment: any) => ({
             ...shipment,
             details: {
                 ...shipment.details,

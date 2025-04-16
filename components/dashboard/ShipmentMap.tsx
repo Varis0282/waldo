@@ -1,8 +1,6 @@
 "use client"
 
-import { useEffect, useRef } from 'react';
-import L from 'leaflet';
-import 'leaflet/dist/leaflet.css';
+import dynamic from 'next/dynamic';
 
 interface MapProps {
     center: {
@@ -12,45 +10,19 @@ interface MapProps {
     zoom: number;
 }
 
+const MapComponent = dynamic<MapProps>(
+    () => import('./MapComponent').then(mod => mod.default),
+    {
+        ssr: false,
+        loading: () => (
+            <div className="relative w-full h-full">
+                <div className="h-full w-full rounded-md bg-gray-100" />
+                <div className="absolute inset-0 bg-gray-100 opacity-10 pointer-events-none rounded-md"></div>
+            </div>
+        )
+    }
+);
+
 export function SimpleMap({ center, zoom }: MapProps) {
-    const mapRef = useRef<HTMLDivElement>(null);
-    const mapInstanceRef = useRef<L.Map | null>(null);
-
-    useEffect(() => {
-        if (!mapRef.current) return;
-
-        if (!mapInstanceRef.current) {
-            mapInstanceRef.current = L.map(mapRef.current, {
-                zoomControl: false, // Remove zoom controls
-                attributionControl: false, // Remove attribution
-                dragging: false, // Disable dragging
-                scrollWheelZoom: false, // Disable scroll wheel zoom
-            }).setView([center.lat, center.lng], zoom);
-
-            L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-                maxZoom: 19,
-            }).addTo(mapInstanceRef.current);
-        } else {
-            mapInstanceRef.current.setView([center.lat, center.lng], zoom);
-        }
-
-        return () => {
-        };
-    }, [center, zoom]);
-
-    useEffect(() => {
-        return () => {
-            if (mapInstanceRef.current) {
-                mapInstanceRef.current.remove();
-                mapInstanceRef.current = null;
-            }
-        };
-    }, []);
-
-    return (
-        <div className="relative w-full h-full">
-            <div ref={mapRef} className="h-full w-full rounded-md" />
-            <div className="absolute inset-0 bg-gray-100 opacity-10 pointer-events-none rounded-md"></div>
-        </div>
-    );
+    return <MapComponent center={center} zoom={zoom} />;
 }
